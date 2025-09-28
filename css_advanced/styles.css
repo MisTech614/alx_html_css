@@ -1,0 +1,197 @@
+/* ---------- Base ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+:root{
+  --bg-dark: #071629;
+  --text: #ffffff;
+  --muted: rgba(255,255,255,.75);
+  --accent: #C271FF;                 /* purple from mock */
+  --hero-img: url("file:///Users/dafrosambanga/Desktop/alx_sefe/alx_html_css/css_advanced/CSS-Advanced-5/Object.png"); 
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg-dark);
+  line-height: 1.4;
+}
+
+/* ---------- Header / Nav ---------- */
+header{
+  position:absolute;                /* sits over the hero image */
+  inset:0 0 auto 0;
+  z-index:50;
+}
+header nav{
+  max-width:1200px;
+  margin:0 auto;
+  padding:28px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+header nav img{
+  height: clamp(24px, 2.4vw, 36px);
+  width:auto;
+  display:block;
+  object-fit:contain;
+  filter: brightness(0) invert(1);  /* white logo */
+  -webkit-user-drag: none;
+  user-select: none;
+}
+header nav ul{
+  list-style:none;
+  display:flex;
+  gap:40px;
+}
+header nav a{
+  text-decoration:none;
+  color:var(--text);
+  font-weight:600;
+  letter-spacing:.04em;
+  font-size:.875rem;
+  opacity:.9;
+  transition: color .2s ease, opacity .2s ease;
+}
+header nav a:hover{ color:var(--accent); opacity:1; }
+
+/* ---------- Hero (first section) ---------- */
+main > section:first-of-type{
+  position:relative;
+  min-height:100dvh;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;         /* pros row near bottom */
+  overflow:hidden;
+
+  /* Full-bleed image + vignettes like the design */
+  background:
+    radial-gradient(1200px 70% at 65% 8%, rgba(7,22,41,0) 0%, rgba(7,22,41,.55) 55%, rgba(7,22,41,.85) 85%, rgba(7,22,41,.95) 100%),
+    linear-gradient(180deg, rgba(7,22,41,.15) 0%, rgba(7,22,41,.85) 62%, rgba(7,22,41,1) 100%),
+    var(--hero-img) center right/cover no-repeat;
+}
+
+/* --- Headline block (first div inside first section) --- */
+main > section:first-of-type > div:first-of-type{
+  margin-top:120px;                 /* space below header */
+  margin-inline:auto;
+  max-width:960px;
+  padding:0 24px;
+  text-align:center;
+}
+
+main > section:first-of-type h1{
+  font-size: clamp(40px, 6.5vw, 96px);
+  line-height:1.02;
+  font-weight:800;
+  letter-spacing:-.02em;
+  text-shadow: 0 10px 30px rgba(0,0,0,.35);
+  margin-bottom:16px;
+}
+
+/* SMILES • GRIN • LAUGH */
+main > section:first-of-type > div:first-of-type span{
+  display:inline-block;
+  font-size:.85rem;
+  font-weight:700;
+  letter-spacing:.25em;
+  color:var(--muted);
+  margin:0 8px 26px;
+}
+main > section:first-of-type > div:first-of-type span:not(:last-of-type)::after{
+  content:" • ";
+  margin-left:12px;
+  opacity:.7;
+}
+
+/* CTA */
+main > section:first-of-type button{
+  margin-top:6px;
+  border:0;
+  border-radius:999px;
+  padding:14px 28px;
+  font-weight:700;
+  letter-spacing:.04em;
+  color:#fff;
+  background:linear-gradient(180deg, #D29BFF 0%, var(--accent) 100%);
+  box-shadow:0 12px 32px rgba(194,113,255,.38), inset 0 1px 0 rgba(255,255,255,.35);
+  cursor:pointer;
+  transition: transform .12s ease, box-shadow .2s ease, filter .2s ease;
+}
+main > section:first-of-type button:hover{
+  transform:translateY(-1px);
+  box-shadow:0 16px 40px rgba(194,113,255,.45);
+}
+main > section:first-of-type button:active{
+  transform:translateY(0);
+  filter:saturate(1.08);
+}
+
+/* --- “Learn from the pros” (second div inside first section) --- */
+main > section:first-of-type > div:nth-of-type(2){
+  margin:72px auto 64px;
+  width:100%;
+  max-width:1100px;
+  padding:0 24px 24px;
+  text-align:center;
+}
+main > section:first-of-type > div:nth-of-type(2) > h2{
+  font-size:clamp(20px, 2.6vw, 28px);
+  font-weight:700;
+  margin-bottom:36px;
+  color:#fff;
+}
+/* To color only the word “Learn”, wrap it:
+   <h2><span class="highlight">Learn</span> from the pros</h2> */
+main > section:first-of-type > div:nth-of-type(2) > h2 .highlight{ color:var(--accent); }
+
+/* Pros row */
+main > section:first-of-type > div:nth-of-type(2) > div{
+  display:grid;
+  grid-template-columns:repeat(4, minmax(0,1fr));
+  gap:28px;
+}
+main > section:first-of-type > div:nth-of-type(2) > div > div{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+}
+main > section:first-of-type > div:nth-of-type(2) img{
+  width:110px;
+  height:110px;
+  object-fit:cover;
+  border-radius:999px;
+  border:4px solid rgba(255,255,255,.12);
+  box-shadow:0 10px 20px rgba(0,0,0,.35), 0 0 0 6px rgba(194,113,255,.15);
+  margin-bottom:14px;
+}
+main > section:first-of-type > div:nth-of-type(2) h3{
+  font-size:1rem;
+  font-weight:700;
+  margin-bottom:6px;
+}
+main > section:first-of-type > div:nth-of-type(2) p{
+  font-size:.85rem;
+  color:var(--muted);
+}
+
+/* ---------- Responsive tweaks ---------- */
+@media (max-width:900px){
+  header nav ul{ gap:24px; }
+  main > section:first-of-type > div:nth-of-type(2) > div{
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    row-gap:36px;
+  }
+}
+@media (max-width:560px){
+  header nav{ padding:22px 16px; }
+  header nav ul{ gap:18px; }
+  header nav a{ font-size:.8rem; }
+  main > section:first-of-type h1{ font-size: clamp(36px, 10vw, 64px); }
+  main > section:first-of-type > div:nth-of-type(2){ margin:56px auto 40px; }
+  main > section:first-of-type > div:nth-of-type(2) > div{ grid-template-columns:1fr; }
+}
+
