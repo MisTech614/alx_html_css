@@ -32,6 +32,12 @@ article {
   min-width: 0;               /* allow content to shrink within flex */
   overflow-y: auto;           /* for scrolling within article */
 }
+article, h1 {
+  font-style: italic;
+}
+article, p {
+  color:navy;
+}
 
 aside {
   flex: 1;                    /* 1/3 width */
@@ -39,3 +45,8 @@ aside {
   overflow-y: auto;           /* scroll within aside */
 }
 
+/* Optional: visual clarity */
+header { background: #f5f5f5; }
+footer { background: #f5f5f5; }
+article { background: #ffffff; }
+aside { background: #fafafa; }
