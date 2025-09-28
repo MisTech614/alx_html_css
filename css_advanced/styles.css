@@ -622,6 +622,80 @@ main > section:nth-of-type(5) > div > div > div:nth-child(2n){
     padding: 72px 18px 84px;
   }
 }
+/* ============ Footer Section ============ */
+footer{
+  /* footer-only variables */
+  --footer-bg: #071629;
+  --footer-text: #ffffff;
+  --footer-muted: rgba(255,255,255,.55);
+  --footer-accent: #C271FF;
 
-  
-  
+  background: var(--footer-bg);
+  color: var(--footer-text);
+}
+
+footer > section{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 44px 24px 60px;
+}
+
+/* top row: logo left, socials right */
+footer > section > div:first-of-type{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* logo inside footer only */
+footer img[alt="logo"]{
+  height: 32px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  filter: brightness(0) invert(1); /* white on dark bg */
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+/* socials container */
+footer > section > div:first-of-type > div{
+  display: flex;
+  gap: 18px;
+}
+
+/* brand icons (footer only) */
+footer i.fa-brands{
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #ffffff;
+  color: var(--footer-bg);
+  font-size: 14px;
+  box-shadow: 0 6px 14px rgba(0,0,0,.22);
+  transition: transform .12s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+}
+footer i.fa-brands:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(0,0,0,.28);
+  background: var(--footer-accent);
+  color: #fff;
+}
+
+/* copyright (footer only) */
+footer > section > p{
+  margin: 28px 0 0;
+  text-align: center;
+  font-size: .9rem;
+  color: var(--footer-muted);
+}
+
+/* responsive (footer only) */
+@media (max-width: 640px){
+  footer > section{
+    padding: 36px 16px 48px;
+  }
+}
