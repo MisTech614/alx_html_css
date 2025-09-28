@@ -1,0 +1,41 @@
+/* Recommended reset */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  display: flex;              /* body is a flex container */
+  flex-direction: column;     /* column: header, main, footer */
+  min-height: 100vh;          /* fill the viewport */
+}
+
+header,
+footer {
+  flex: 0 0 auto;             /* don't grow/shrink */
+  padding: 1rem;
+}
+
+/* MAIN: row of article + aside */
+main {
+  display: flex;              /* main is a flex container */
+  flex-direction: row;        /* row: article | aside */
+  flex: auto;                 /* keep automatic height & width (1 1 auto) */
+  min-height: 0;              /* allow children to scroll inside */
+  overflow: hidden;           /* for avoiding double scrollbars on the page */
+  gap: 1rem;                  /* modern spacing between columns */
+  padding: 1rem;
+}
+
+/* CONTENT COLUMNS */
+article {
+  flex: 2;                    /* 2/3 width */
+  min-width: 0;               /* allow content to shrink within flex */
+  overflow-y: auto;           /* for scrolling within article */
+}
+
+aside {
+  flex: 1;                    /* 1/3 width */
+  min-width: 0;
+  overflow-y: auto;           /* scroll within aside */
+}
+
