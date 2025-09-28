@@ -267,4 +267,174 @@ main > section:first-of-type > div:nth-of-type(2) p{
       margin-inline: auto;
     }
   }
+  /* ===================== Popular Tutorials (videos list) ===================== */
+  :root{
+    --accent:#C271FF;          /* purple */
+    --ink:#2b2f3a;             /* body text on white */
+    --muted:#6b7280;           /* gray text */
+    --thumb-h:180px;           /* thumbnail height */
+  }
+  
+  /* Section wrapper */
+  main > section:nth-of-type(3){
+    position:relative;
+    background:#fff;
+    color:var(--ink);
+    padding:72px 24px 96px;
+    display:grid;
+    grid-template-columns:repeat(4, minmax(0,1fr));
+    gap:28px;
+  }
+  
+  /* Top and bottom purple bars */
+  main > section:nth-of-type(3)::before,
+  main > section:nth-of-type(3)::after{
+    content:"";
+    position:absolute; left:0; right:0; height:14px; background:var(--accent);
+  }
+  main > section:nth-of-type(3)::before{ top:0; } 
+  main > section:nth-of-type(3)::after{ bottom:0; }
+  
+  /* Section heading */
+  main > section:nth-of-type(3) > h2{
+    grid-column:1 / -1;
+    text-align:center;
+    font-weight:700;
+    font-size:clamp(22px, 3vw, 32px);
+    margin-bottom:8px;
+    color:#333;
+  }
+  /* Color only the word “popular” if wrapped in a span.accent */
+  main > section:nth-of-type(3) > h2 .accent{ color:var(--accent); }
+  
+  /* ===================== Card ===================== */
+  main > section:nth-of-type(3) > div{
+    position:relative;
+    background:#fff;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 10px 24px rgba(0,0,0,.08);
+    transition:transform .15s ease, box-shadow .2s ease;
+    display:grid;
+    grid-template-columns:1fr 1fr;   /* lets bottom row align duration right */
+    grid-auto-rows:auto;
+    cursor:pointer;
+  }
+  main > section:nth-of-type(3) > div:hover{
+    transform:translateY(-2px);
+    box-shadow:0 16px 36px rgba(0,0,0,.12);
+  }
+  
+  /* Thumbnail */
+  main > section:nth-of-type(3) > div > img:first-of-type{
+    grid-column:1 / -1;
+    width:100%;
+    height:var(--thumb-h);
+    object-fit:cover;
+    display:block;
+  }
+  
+  /* ===================== Player button (CSS-only) ===================== */
+  /* White circle with purple play triangle, centered over thumbnail. */
+  main > section:nth-of-type(3) > div::after{
+    content:"";
+    position:absolute;
+    top:calc(var(--thumb-h)/2 - 28px);
+    left:50%;
+    transform:translateX(-50%);
+    width:56px; height:56px;
+    background:#ffffff;
+    border-radius:50%;
+    box-shadow:0 10px 26px rgba(0,0,0,.25);
+    pointer-events:none;             /* does not block clicks */
+  }
+  main > section:nth-of-type(3) > div::before{
+    content:"";
+    position:absolute;
+    top:calc(var(--thumb-h)/2 - 10px);
+    left:calc(50% - 6px);
+    border-left:14px solid var(--accent);
+    border-top:10px solid transparent;
+    border-bottom:10px solid transparent;
+    z-index:1;
+    pointer-events:none;
+  }
+  /* Hover/focus “play” feedback */
+  main > section:nth-of-type(3) > div:hover::after,
+  main > section:nth-of-type(3) > div:focus-within::after{
+    transform:translateX(-50%) scale(1.06);
+    box-shadow:0 16px 40px rgba(0,0,0,.28), 0 0 0 8px rgba(194,113,255,.18);
+  }
+  
+  /* Title & description */
+  main > section:nth-of-type(3) h3{
+    grid-column:1 / -1;
+    margin:16px 16px 6px;
+    font-size:1rem;
+    font-weight:700;
+    color:#1f2937;
+  }
+  main > section:nth-of-type(3) > div > p:first-of-type{
+    grid-column:1 / -1;
+    margin:0 16px 12px;
+    font-size:.95rem;
+    color:var(--muted);
+  }
+  
+  /* Author row (avatar + name) */
+  main > section:nth-of-type(3) > div > div:nth-of-type(1){
+    grid-column:1 / -1;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:0 16px 12px;
+  }
+  main > section:nth-of-type(3) > div > div:nth-of-type(1) img{
+    width:28px; height:28px; border-radius:50%; object-fit:cover;
+  }
+  main > section:nth-of-type(3) > div > div:nth-of-type(1) h4{
+    font-size:.95rem;
+    font-weight:600;
+    color:var(--accent);
+  }
+  
+  /* Stars (left) */
+  main > section:nth-of-type(3) > div > div:nth-of-type(2){
+    margin:0 16px 16px;
+    justify-self:start;
+    align-self:center;
+  }
+  main > section:nth-of-type(3) i.fa-star{
+    font-size:.8rem;
+    color:var(--accent);
+    margin-right:4px;
+  }
+  
+  /* Duration (right) */
+  main > section:nth-of-type(3) > div > p:last-of-type{
+    margin:0 16px 16px;
+    justify-self:end;
+    align-self:center;
+    font-weight:700;
+    font-size:.9rem;
+    color:#8e8e8e;
+  }
+  
+  /* ===================== Responsive ===================== */
+  @media (max-width:1100px){
+    main > section:nth-of-type(3){
+      grid-template-columns:repeat(2, minmax(0,1fr));
+    }
+  }
+  @media (max-width:640px){
+    :root{ --thumb-h:160px; }
+    main > section:nth-of-type(3){
+      grid-template-columns:1fr;
+      padding:56px 16px 72px;
+    }
+    main > section:nth-of-type(3) > div::after{ top:calc(var(--thumb-h)/2 - 24px); width:48px; height:48px; }
+    main > section:nth-of-type(3) > div::before{ top:calc(var(--thumb-h)/2 - 9px); }
+  }
+ 
+  
   
