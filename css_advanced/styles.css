@@ -540,6 +540,88 @@ main > section:nth-of-type(4) > button:active{
     padding: 56px 16px 72px;
   }
 }
+/* ===================== FAQ Section ===================== */
+:root{
+  --bg-dark:#071629;
+  --ink:#1f2732;
+  --muted:#8b94a3;
+}
+
+main > section:nth-of-type(5){
+  position: relative;
+  background:#ffffff;
+  color:var(--ink);
+  padding: 90px 24px 110px;
+}
+
+/* Thin dark bars (top & bottom) */
+main > section:nth-of-type(5)::before,
+main > section:nth-of-type(5)::after{
+  content:"";
+  position:absolute; left:0; right:0; height:14px;
+  background:var(--bg-dark);
+}
+main > section:nth-of-type(5)::before{ top:0; }
+main > section:nth-of-type(5)::after{ bottom:0; }
+
+/* Title */
+main > section:nth-of-type(5) > h2{
+  text-align:center;
+  font-size: clamp(28px, 4vw, 46px);
+  font-weight: 600;
+  letter-spacing: .18em;        /* F.A.Q. tracking like the design */
+  color: #2a3140;
+  margin: 0 0 56px;
+}
+
+/* Outer container that holds the two columns */
+main > section:nth-of-type(5) > div{
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 56px 80px;               /* row gap | column gap */
+}
+
+/* Each column wrapper (already 2 divs in your HTML) */
+main > section:nth-of-type(5) > div > div{
+  display: grid;
+  grid-auto-rows: min-content;
+  row-gap: 28px;                /* space between Q and A blocks */
+}
+
+/* Question blocks – in your HTML, questions are the odd children
+   of each column wrapper */
+main > section:nth-of-type(5) > div > div > div:nth-child(odd) h3{
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;             /* bold question */
+  color: #2b3240;
+}
+
+/* Answer blocks – even children following each question */
+main > section:nth-of-type(5) > div > div > div:nth-child(even){
+  font-size: .98rem;
+  line-height: 1.8;
+  color: var(--muted);
+  max-width: 480px;             /* keeps comfortable line length */
+}
+
+/* Extra vertical spacing between each Q&A pair */
+main > section:nth-of-type(5) > div > div > div:nth-child(2n){
+  margin-bottom: 24px;
+}
+
+/* ----------------- Responsive ----------------- */
+@media (max-width: 900px){
+  main > section:nth-of-type(5) > div{
+    grid-template-columns: 1fr; /* stack columns */
+    gap: 40px;
+  }
+  main > section:nth-of-type(5){
+    padding: 72px 18px 84px;
+  }
+}
 
   
   
