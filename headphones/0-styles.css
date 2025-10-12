@@ -1,0 +1,80 @@
+  /* ========== RESET (simple) ========== */
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body { margin: 0; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  img, picture { max-width: 100%; display: block; }
+  button, input { font: inherit; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ========== VARIABLES ========== */
+  :root{
+    --brand: #FF6565;                /* link hover/active */
+    --ink: #0E1320;
+    --ink-muted: #647080;
+    --bg: #0C1826;
+    --hero-overlay: rgba(12, 24, 38, .65);
+    --radius: 14px;
+
+    --content-max: 1000px;           /* centered content (hard req) */
+    --pad: 16px;
+    --space: 24px;
+    --space-lg: 48px;
+
+    --h1: clamp(28px, 6vw, 48px);
+    --h2: clamp(18px, 3.2vw, 22px);
+  }
+
+  /* ========== GENERIC LAYOUT HELPERS ========== */
+  .container { max-width: var(--content-max); margin-inline: auto; padding-inline: var(--pad); }
+  .row { display: flex; align-items: center; justify-content: space-between; gap: var(--space); }
+  .stack { display: grid; gap: var(--space); }
+  .center { text-align: center; }
+
+  /* ========== HEADER ========== */
+  .header { position: absolute; inset: 0 0 auto 0; }
+  .header-bar { padding-block: 14px; color: white; }
+  .logo { font-weight: 700; letter-spacing: .5px; }
+  .nav { display: flex; gap: 18px; }
+  .link { color: white; }
+  .link:hover, .link:active { color: var(--brand); }      /* hard req */
+
+  .menu-btn { display: none; background: transparent; border: 0; color: white; cursor: pointer; }
+
+  /* ========== HERO ========== */
+  .hero {
+    position: relative;
+    min-height: 78svh;
+    display: grid;
+    align-items: end;
+    color: white;
+    background:
+      radial-gradient(120% 70% at 50% 100%, rgba(12,24,38,.85) 10%, rgba(12,24,38,0) 60%) ,
+      linear-gradient(0deg, var(--hero-overlay), var(--hero-overlay)),
+      url("file:///Users/dafrosambanga/Desktop/alx_sefe/alx_html_css/headphones/images/headphones_hero_1.jpg") center / cover no-repeat;
+  }
+  .hero-inner { padding-block: var(--space-lg); }
+  .eyebrow { text-transform: uppercase; letter-spacing: .12em; color: var(--ink-muted); color: #D6DEEA; }
+  .title { font-size: var(--h1); line-height: 1.12; margin: 0; }
+  .subtitle { font-size: var(--h2); color: #E6EDF7; margin: 0; }
+
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 12px 20px; border-radius: var(--radius); border: 0;
+    background: white; color: var(--ink); cursor: pointer; transition: opacity .15s ease;
+  }
+  .btn:hover, .btn:active { opacity: .9; }               /* hard req */
+  .btn.alt { background: transparent; color: white; outline: 1px solid rgba(255,255,255,.35); }
+
+  /* ========== MOBILE ≤ 480px (hard req) ========== */
+  @media (max-width: 480px){
+    .menu-btn { display: inline-flex; }
+    .nav { display: none; }
+    .nav.open { display: flex; flex-direction: column; background: rgba(0,0,0,.6); padding: var(--pad); border-radius: 10px; }
+
+    .hero { min-height: 70svh; align-items: end; }
+    .hero-inner { padding-block: 40px; }
+    .actions { justify-content: center; }
+    .center-sm { text-align: center; }
+  }

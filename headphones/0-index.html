@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <title>Header + Hero</title>
+  <link href="0-styles.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="container header-bar row">
+      <div class="logo">Sonic</div>
+
+      <button class="menu-btn" aria-expanded="false" aria-controls="nav">☰</button>
+
+      <nav id="nav" class="nav">
+        <a class="link" href="#features">Features</a>
+        <a class="link" href="#pricing">Pricing</a>
+        <a class="link" href="#about">About</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="container hero-inner stack center-sm">
+      <div class="eyebrow">Feel the sound</div>
+      <h1 class="title">Lose yourself in every note</h1>
+      <p class="subtitle">Premium wireless audio with deep bass and crystal clarity.</p>
+
+      <div class="actions">
+        <a class="btn" href="#get-started">Get Started</a>
+        <a class="btn alt" href="#learn-more">Learn More</a>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // tiny, generic mobile nav toggle (no specificity)
+  const btn = document.querySelector('.menu-btn');
+  const nav = document.getElementById('nav');
+  btn?.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(open));
+  });
+</script>
+</body>
+</html>
