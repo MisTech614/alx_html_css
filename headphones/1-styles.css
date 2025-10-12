@@ -1,0 +1,182 @@
+/* ========== RESET (simple) ========== */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+img, picture { max-width: 100%; display: block; }
+button, input { font: inherit; }
+a { text-decoration: none; color: inherit; }
+
+/* ========== VARIABLES ========== */
+:root{
+  --brand: #FF6565;                /* link hover/active */
+  --ink: #0E1320;
+  --ink-muted: #647080;
+  --bg: #0C1826;
+  --hero-overlay: rgba(12, 24, 38, .65);
+  --radius: 14px;
+
+  --content-max: 1000px;           /* centered content (hard req) */
+  --pad: 16px;
+  --space: 24px;
+  --space-lg: 48px;
+
+  --h1: clamp(28px, 6vw, 48px);
+  --h2: clamp(18px, 3.2vw, 22px);
+}
+
+/* ========== GENERIC LAYOUT HELPERS ========== */
+.container { max-width: var(--content-max); margin-inline: auto; padding-inline: var(--pad); }
+.row { display: flex; align-items: center; justify-content: space-between; gap: var(--space); }
+.stack { display: grid; gap: var(--space); }
+.center { text-align: center; }
+
+/* ========== HEADER ========== */
+.header { position: absolute; inset: 0 0 auto 0; }
+.header-bar { padding-block: 14px; color: white; }
+.logo { font-weight: 700; letter-spacing: .5px; }
+.nav { display: flex; gap: 18px; }
+.link { color: white; }
+.link:hover, .link:active { color: var(--brand); }      /* hard req */
+
+.menu-btn { display: none; background: transparent; border: 0; color: white; cursor: pointer; }
+
+/* ========== HERO ========== */
+.hero {
+  position: relative;
+  min-height: 78svh;
+  display: grid;
+  align-items: end;
+  color: white;
+  background:
+    radial-gradient(120% 70% at 50% 100%, rgba(12,24,38,.85) 10%, rgba(12,24,38,0) 60%) ,
+    linear-gradient(0deg, var(--hero-overlay), var(--hero-overlay)),
+    url("file:///Users/dafrosambanga/Desktop/alx_sefe/alx_html_css/headphones/images/headphones_hero_1.jpg") center / cover no-repeat;
+}
+.hero-inner { padding-block: var(--space-lg); }
+.eyebrow { text-transform: uppercase; letter-spacing: .12em; color: var(--ink-muted); color: #D6DEEA; }
+.title { font-size: var(--h1); line-height: 1.12; margin: 0; }
+.subtitle { font-size: var(--h2); color: #E6EDF7; margin: 0; }
+
+.actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 12px 20px; border-radius: var(--radius); border: 0;
+  background: white; color: var(--ink); cursor: pointer; transition: opacity .15s ease;
+}
+.btn:hover, .btn:active { opacity: .9; }               /* hard req */
+.btn.alt { background: transparent; color: white; outline: 1px solid rgba(255,255,255,.35); }
+
+/* ========== MOBILE ≤ 480px (hard req) ========== */
+@media (max-width: 480px){
+  .menu-btn { display: inline-flex; }
+  .nav { display: none; }
+  .nav.open { display: flex; flex-direction: column; background: rgba(0,0,0,.6); padding: var(--pad); border-radius: 10px; }
+
+  .hero { min-height: 70svh; align-items: end; }
+  .hero-inner { padding-block: 40px; }
+  .actions { justify-content: center; }
+  .center-sm { text-align: center; }
+}
+/* ===== Reset (small, generic) ===== */
+*, *::before, *::after { box-sizing: border-box; }
+body, h1, h2, h3, p, ul, li { margin: 0; }
+img { display: block; max-width: 100%; height: auto; }
+ul { padding: 0; list-style: none; }
+a { color: inherit; text-decoration: none; }
+
+/* ===== Variables ===== */
+:root{
+  --brand: #FF6565;               /* link hover/active (hard requirement) */
+  --ink: #111111;
+  --muted: #6B6B6B;
+  --surface: #ffffff;
+  --surface-2: #f6f7f9;
+
+  --content-max: 1000px;          /* centered (hard requirement) */
+  --pad: 16px;
+  --gap: 24px;
+  --gap-lg: 40px;
+  --radius: 14px;
+
+  --h2: clamp(24px, 5vw, 34px);
+  --h3: clamp(18px, 3.2vw, 20px);
+}
+
+/* ===== Optional: icon webfont (if you want font-based icons) ===== */
+@font-face {
+  font-family: "HS-Icons";
+  src: url("holberton_school-icon.eot");
+  src:
+    url("holberton_school-icon.eot?#iefix") format("embedded-opentype"),
+    url("holberton_school-icon.woff") format("woff"),
+    url("holberton_school-icon.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===== Layout helpers (generic, low specificity) ===== */
+.section { padding-block: clamp(40px, 6vw, 72px); background: var(--surface); }
+.container { max-width: var(--content-max); margin-inline: auto; padding-inline: var(--pad); }
+.stack { display: grid; gap: var(--gap); }
+
+/* ===== What we do ===== */
+.what .title { font-size: var(--h2); line-height: 1.2; color: var(--ink); }
+.what .lead { color: var(--muted); max-width: 60ch; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap);
+  margin-top: var(--gap-lg);
+}
+
+.card {
+  display: grid;
+  gap: var(--gap);
+  padding: 20px;
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  min-height: 100%;
+}
+
+.icon-wrap {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: #0C1826;
+  display: grid; place-items: center;
+  overflow: hidden;
+}
+
+/* If you prefer font icons instead of the SVG, uncomment the <span> in HTML and these rules.
+   You must set the correct glyph in the data-glyph attribute (depends on your icon map). */
+.icon-font {
+  font-family: "HS-Icons", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size: 28px; line-height: 1; color: #ffffff;
+}
+.icon-font::before { content: attr(data-glyph); }
+
+.icon { inline-size: 28px; block-size: 28px; }
+
+.card-title { font-size: var(--h3); color: var(--ink); line-height: 1.3; }
+.card-text { color: var(--muted); }
+
+.link { display: inline-block; margin-top: 4px; }
+.link:hover, .link:active { color: var(--brand); } /* hard requirement */
+.link:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ===== Mobile ≤ 480px (hard requirement) ===== */
+@media (max-width: 480px){
+  .grid { grid-template-columns: 1fr; }
+  .section { padding-block: 36px; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: no-preference){
+  .link { transition: color .15s ease; }
+}

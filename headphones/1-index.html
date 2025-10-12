@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <title>Header + Hero</title>
+  <link href="1-styles.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="container header-bar row">
+      <div class="logo">Sonic</div>
+
+      <button class="menu-btn" aria-expanded="false" aria-controls="nav">☰</button>
+
+      <nav id="nav" class="nav">
+        <a class="link" href="#features">Features</a>
+        <a class="link" href="#pricing">Pricing</a>
+        <a class="link" href="#about">About</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="container hero-inner stack center-sm">
+      <div class="eyebrow">Feel the sound</div>
+      <h1 class="title">Lose yourself in every note</h1>
+      <p class="subtitle">Premium wireless audio with deep bass and crystal clarity.</p>
+
+      <div class="actions">
+        <a class="btn" href="#get-started">Get Started</a>
+        <a class="btn alt" href="#learn-more">Learn More</a>
+      </div>
+    </div>
+  </div>
+    <!-- WHAT WE DO – -->
+  <section class="section what" role="region" aria-labelledby="what-title">
+     <div class="container">
+       <div class="stack">
+          <h2 id="what-title" class="title">What we do</h2>
+           <p class="lead">
+             We craft immersive audio experiences—from product design to launch—so listeners feel every note.
+            </p>
+        </div>
+        <!-- Use a list for screen readers; cards remain simple divs inside -->
+       <ul class="grid" role="list">
+        <li class="card">
+          <div class="icon-wrap" aria-hidden="true">
+             <!-- SVG fallback (recommended for crispness).
+                 If you prefer the icon font, see the .icon-font span below and comments in CSS. -->
+              <img class="icon" src="file:///Users/dafrosambanga/Desktop/alx_sefe/alx_html_css/headphones/images/favicon.png" alt="pentagon shaped fav icon" />
+              <!-- <span class="icon-font" aria-hidden="true" data-glyph="a"></span> -->
+            </div>
+          <div class="stack">
+             <h3 class="card-title">Product Design</h3>
+             <p class="card-text">UX research, wireframes, and visual systems that translate perfectly from Figma to code.</p>
+             <a class="link" href="#design">Learn more</a>
+            </div>
+        </li>
+  
+        <li class="card">
+          <div class="icon-wrap" aria-hidden="true">
+             <img class="icon" src="file:///Users/dafrosambanga/Desktop/alx_sefe/alx_html_css/headphones/images/favicon.ico" alt="pentagon shaped fav icon" />
+             <!-- <span class="icon-font" aria-hidden="true" data-glyph="b"></span> -->
+            </div>
+          <div class="stack">
+             <h3 class="card-title">Front-end Engineering</h3>
+             <p class="card-text">Accessible HTML/CSS/JS with first-class responsiveness and performance.</p>
+              <a class="link" href="#frontend">Learn more</a>
+            </div>
+        </li>
+  
+        <li class="card">
+          <div class="icon-wrap" aria-hidden="true">
+             <img class="icon" src="file:///Users/dafrosambanga/Desktop/alx_sefe/alx_html_css/headphones/images/favicon.png" alt="pentagon shaped fav icon" />
+             <!-- <span class="icon-font" aria-hidden="true" data-glyph="c"></span> -->
+            </div>
+            <div class="stack">
+              <h3 class="card-title">Content & Growth</h3>
+               <p class="card-text">Campaigns and SEO that amplify your brand and convert visitors into fans.</p>
+               <a class="link" href="#growth">Learn more</a>
+            </div>
+        </li>
+  
+        <li class="card">
+          <div class="icon-wrap" aria-hidden="true">
+            <img class="icon" src="file:///Users/dafrosambanga/Desktop/alx_sefe/alx_html_css/headphones/images/favicon.ico" alt="pentagon shaped fav icon" />
+            <!-- <span class="icon-font" aria-hidden="true" data-glyph="d"></span> -->
+          </div>
+          <div class="stack">
+            <h3 class="card-title">Support & Scale</h3>
+            <p class="card-text">Post-launch improvements, analytics, and A/B testing to keep you ahead.</p>
+            <a class="link" href="#support">Learn more</a>
+          </div>
+        </li>
+      </ul>
+     </div>
+    </section>
+  <script>
+    // tiny, generic mobile nav toggle (no specificity)
+    const btn = document.querySelector('.menu-btn');
+    const nav = document.getElementById('nav');
+    btn?.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(open));
+    });
+  </script>
+</body>
+</html>
